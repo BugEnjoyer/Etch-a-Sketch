@@ -1,0 +1,1 @@
+const sketchContainer = document.querySelector('.draw-flex-container');
