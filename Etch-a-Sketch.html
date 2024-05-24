@@ -1,13 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="stylesheet" href="Etch-a-Sketch.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@400;700&display=swap" rel="stylesheet">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Etch a Sketch</title>
 </head>
 <body>
+  <h1 class="header">Etch a Sketch</h1>
+  <div class="button-grid-container">
+    <p>Create your Grid ( 16x16  - 64x64 )</p>
+    <input class="input-value" type="range" min="16" max="64" value="16" step="1">
+  </div>
   <div class="draw-flex-container"></div>
 
-  
+  <script src="Etch-a-Sketch.js"></script>
 </body>
 </html>

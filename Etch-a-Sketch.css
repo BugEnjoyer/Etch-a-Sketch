@@ -1,6 +1,26 @@
-.draw-flex-container {
-  display:flex;
-  width: 480px;
-  height: 480px;
-  border:solid;
+.header {
+  margin-left: 500px;
+  font-size: 50px;
+  font-family: "Cabin Sketch", sans-serif;
+  font-weight: 700;
 }
+
+.draw-flex-container {
+  display: grid;
+  grid-template-columns: repeat(16, 1fr );
+  grid-template-rows: repeat(16, 1fr );
+  width: 600px;
+  height: 600px;
+  border:solid 1px black;
+  margin: auto;
+  margin-top: 30px;
+}
+
+.button-grid-container {
+  width:25%;
+  border-color: red;
+  margin:auto;
+  margin-top: 150px;
+}
+
+
