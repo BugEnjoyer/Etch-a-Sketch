@@ -3,7 +3,10 @@ const inputElement = document.querySelector('.input-value');
 const colorInput = document.querySelector('.color-input');
 let value = inputElement.value;
 let colorValue = "#000000";
+let color;
+let rainbow = false;
 let numDiv = value*value;
+createGrid(16);
 function createGrid(value){
   numDiv = value*value;
   sketchContainer.style.gridTemplateColumns = `repeat(${value}, 1fr)`;
@@ -12,9 +15,11 @@ function createGrid(value){
   for (i=0; i <= numDiv; i++) {
      let divs = document.createElement('div');
      divs.classList.add("grid");
-     divs.addEventListener ('mouseover', applyColor)
-    sketchContainer.appendChild(divs);
+     setColor();
+     divs.addEventListener ('mouseover', applyColor);
+     sketchContainer.appendChild(divs);
   }
+
 };
 //Also possible with sketchContainer.insertAdjacentElement("beforeend", divs);  very usefull 
 // becouse many possibilities instead of just "beforeend". Instead of using appendChild
@@ -29,12 +34,16 @@ inputElement.addEventListener('input', () => {
 
 
 colorInput.addEventListener('input', () => {
-  colorValue = colorInput.value;
-  return colorValue;
+  color = colorInput.value;
+  rainbow = false;
+  return color;
 });
 
 const eraser = document.querySelector('.eraser-btn');
-eraser.addEventListener('click', () => colorValue = "#FFFFFF");
+eraser.addEventListener('click', () => {
+  color = "#FFFFFF"
+  rainbow = false;
+});
 
 const clearBtn = document.querySelector('.clear-btn');
 clearBtn.addEventListener('click', () => {
@@ -47,16 +56,23 @@ function clearBoard() {
 };
 
 const randomColor = document.querySelector('.rainbow-btn');
-randomColor.addEventListener('click', () => colorValue = `hsl(${Math.random() * 360 }, 100%, 50%)`);
+randomColor.addEventListener('click', () => {
+  rainbow = !rainbow;
+});
 
 function applyColor () {
+  setColor();
   this.style.backgroundColor = `${colorValue}`;
 }
 
 function setColor() {
-  colorValue = color;
+  if ( rainbow === true) {
+    colorValue = `${"#" + Math.floor(Math.random()*16777215).toString(16)}`;
+  } else {
+  colorValue = color || "#000000";
+  return colorValue;
 }
-
+}
 
 
 
