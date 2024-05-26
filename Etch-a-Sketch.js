@@ -5,8 +5,15 @@ let value = inputElement.value;
 let colorValue = "#000000";
 let color;
 let rainbow = false;
+let click = false;
 let numDiv = value*value;
+
+document.addEventListener('DOMContentLoaded', function () { 
+  inputElement.value = 16;
+  colorInput.value = "#000000";
+});
 createGrid(16);
+
 function createGrid(value){
   numDiv = value*value;
   sketchContainer.style.gridTemplateColumns = `repeat(${value}, 1fr)`;
@@ -16,6 +23,13 @@ function createGrid(value){
      let divs = document.createElement('div');
      divs.classList.add("grid");
      setColor();
+     divs.addEventListener ('click', () => {
+       if ( click === false) {
+        click = !click;
+       } else if ( click === true) {
+        click= false;
+       }
+     });
      divs.addEventListener ('mouseover', applyColor);
      sketchContainer.appendChild(divs);
   }
@@ -61,8 +75,10 @@ randomColor.addEventListener('click', () => {
 });
 
 function applyColor () {
+  if ( click === true) {
   setColor();
   this.style.backgroundColor = `${colorValue}`;
+  }
 }
 
 function setColor() {
@@ -71,7 +87,7 @@ function setColor() {
   } else {
   colorValue = color || "#000000";
   return colorValue;
-}
+ }
 }
 
 
